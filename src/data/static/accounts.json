@@ -1,0 +1,70 @@
+{
+    "accounts": [
+        {
+            "login": "radoslaw_adamczyk",
+            "eMail": "radoslaw.adamczyk2000@gmail.com",
+            "password": "Donatowo.53",
+            "role": "employeer"
+        },
+        {
+            "login": "katarzyna_nowak",
+            "eMail": "katarzyna.nowak1995@gmail.com",
+            "password": "Wroclaw.12",
+            "role": "employeer"
+        },
+        {
+            "login": "marek_kowalski",
+            "eMail": "marek.kowalski1988@gmail.com",
+            "password": "Gdansk.89",
+            "role": "customer"
+        },
+        {
+            "login": "anna_lewandowska",
+            "eMail": "anna.lewandowska1992@gmail.com",
+            "password": "Krakow.44",
+            "role": "employeer"
+        },
+        {
+            "login": "piotr_wisniewski",
+            "eMail": "piotr.wisniewski1985@gmail.com",
+            "password": "Poznan.78",
+            "role": "employeer"
+        },
+        {
+            "login": "justyna_zielinska",
+            "eMail": "justyna.zielinska1990@gmail.com",
+            "password": "Lublin.21",
+            "role": "employeer"
+        },
+        {
+            "login": "adam_kaczmarek",
+            "eMail": "adam.kaczmarek1983@gmail.com",
+            "password": "Warszawa.01",
+            "role": "employeer"
+        },
+        {
+            "login": "magdalena_dabrowska",
+            "eMail": "magdalena.dabrowska1997@gmail.com",
+            "password": "Torun.55",
+            "role": "customer"
+        },
+        {
+            "login": "michal_kubiak",
+            "eMail": "michal.kubiak1991@gmail.com",
+            "password": "Zabrze.17",
+            "role": "employeer"
+        },
+        {
+            "login": "dominika_szymanska",
+            "eMail": "dominika.szymanska1996@gmail.com",
+            "password": "Szczecin.66",
+            "role": "employeer"
+        },
+        {
+            "login": "krzysztof_wolski",
+            "eMail": "krzysztof.wolski1980@gmail.com",
+            "password": "Opole.32",
+            "role": "customer"
+        }
+    ]
+}
