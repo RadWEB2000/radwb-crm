@@ -1,24 +1,35 @@
 "use client"
-import accounts from "@/static/accounts.json";
+import { accounts } from "@/static/accounts.json";
 import validateLoginForm from "@/funcs/validateLoginForm";
+import { useRouter } from "next/navigation";
 export default function LoginPanel() {
     // console.log(accounts.accounts)
+    const router = useRouter();
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         const form = e.currentTarget;
         const login = form.login.value;
         const eMail = form.eMail.value;
         const password = form.password.value;
 
-        const res = await fetch('/api/login', {
-            method: 'POST',
-            body: JSON.stringify({ login, eMail, password }),
-            headers: { 'Content-Type': 'application/json' },
-        });
+        const getAccount = accounts.find((account) => account.login === login && account.eMail === eMail && account.password === password);
 
-        const data = await res.json();
-        console.log('data', data)
+        if (getAccount) {
+            if (getAccount.role === "employeer") {
+                console.log("dashboard")
+                return router.push('/dashboard')
+            } else if (getAccount.role === "customer") {
+                console.log("customer")
+                return router.push('/customer')
+            }
+        } else {
+            console.log("error")
+            return "error"
+        }
+
+        console.log(getAccount)
+
     }
 
     return (
