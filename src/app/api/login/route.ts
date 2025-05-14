@@ -1,27 +1,24 @@
+import { supabase } from "@/configs/supabase";
 import { NextResponse } from "next/server";
-import { accounts } from "@/static/accounts.json";
-
 
 export async function POST(req: Request) {
-    const body = await req.json();
-    const { login, eMail, password } = body;
+    const formData = await req.formData();
+    const login = formData.get('login') as string;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-    console.log('body', body)
+    const { data: customer } = await supabase.from('customers').select('*').or(`login.eq.${login},email.eq.${email}`).single();
+    const { data: employeers } = await supabase.from('employeers').select('*').or(`login.eq.${login},email.eq.${email}`).single();
 
-    const user = accounts.find((account) => account.login === login && account.eMail === eMail && account.password === password);
-
-    console.log('user', user)
-    if (!user) {
-        return NextResponse.json(
-            {
-                success: false,
-                message: 'Niepoprawne dane logowania'
-            },
-            {
-                status: 401
-            }
-        )
+    if (customer && customer.password === password) {
+        return NextResponse.redirect(new URL('/customer', req.url));
+    }
+    if (employeers && employeers.password === password) {
+        return NextResponse.redirect(new URL('/dashboard', req.url));
     }
 
+    return NextResponse.json({
+        error: 'Nieznaleziono odpowiedniego konta'
+    }, { status: 401 })
 
 }
