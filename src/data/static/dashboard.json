@@ -1,0 +1,84 @@
+{
+    "navigation": {
+        "brand": {},
+        "menu": [
+            {
+                "label": "Start",
+                "uri": "/dashboard",
+                "submenu": null
+            },
+            {
+                "label": "Klienci",
+                "uri": "/dashboard/clients",
+                "submenu": null
+            },
+            {
+                "label": "Zadania",
+                "uri": "/dashboard/tasks",
+                "submenu": [
+                    {
+                        "label": "Pilne",
+                        "uri": "/dashboard/tasks/"
+                    },
+                    {
+                        "label": "Nowe",
+                        "uri": "/dashboard/tasks/"
+                    },
+                    {
+                        "label": "Zbliżające się",
+                        "uri": "/dashboard/tasks/"
+                    },
+                    {
+                        "label": "Po terminie",
+                        "uri": "/dashboard/tasks/"
+                    }
+                ]
+            },
+            {
+                "label": "Narzędzia",
+                "uri": "/dashboard/tools",
+                "submenu": null
+            },
+            {
+                "label": "Zarządzanie",
+                "uri": "/dashboard/managment",
+                "submenu": [
+                    {
+                        "label": "Urlopy",
+                        "uri": "/dashboard/managment/holidays"
+                    },
+                    {
+                        "label": "Czas pracy",
+                        "uri": "/dashboard/managment/working-time"
+                    },
+                    {
+                        "label": "Raport pracy",
+                        "uri": "/dashboard/managment/work-report"
+                    }
+                ]
+            },
+            {
+                "label": "Treści",
+                "uri": "/dashboard/content",
+                "submenu": null
+            },
+            {
+                "label": "Linkowanie",
+                "uri": "/dashboard/link-building",
+                "submenu": null
+            }
+        ]
+    },
+    "details": [
+        {
+            "label": "Ustawienia",
+            "icon": "gear",
+            "uri": "/dashboard/settings"
+        },
+        {
+            "label": "Wyloguj",
+            "icon": "exit",
+            "uri": "/"
+        }
+    ]
+}

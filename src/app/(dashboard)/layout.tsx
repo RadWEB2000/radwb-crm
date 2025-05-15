@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "@/css/Globals.css";
 import Link from "next/link";
-
-const inter = Inter({
-    subsets: ['latin', 'latin-ext'],
-    preload: true,
-
-})
+import { details, navigation } from "@/static/dashboard.json";
+import { FaGear, FaArrowDown } from "react-icons/fa6";
+import { BiExit } from "react-icons/bi";
 
 
 export const metadata: Metadata = {
@@ -22,21 +18,69 @@ export default function DashboardLayout({
 }>) {
     return (
         <div className="grid grid-cols-16">
-            <nav className="col-span-2 h-screen bg-amber-950 flex items-center justify-center" >
-                <menu className="flex flex-col bg-green-200">
-                    <Link href="#" >
-                        Klienci
+            <nav className="col-span-2 sticky top-0 h-screen bg-stone-900 flex flex-col items-around justify-between px-2 py-5" >
+                <div>
+                    <Link className="text-3xl text-white font-black" href="/dashboard">
+                        RadWEB CRM
                     </Link>
-                    <Link href="#" >
-                        Zadania
-                    </Link>
-                    <Link href="#" >
-                        Ustawienia
-                    </Link>
+                </div>
+                <menu className="flex flex-col space-y-2 px-3">
+                    {
+                        navigation.menu.map(({ label, submenu, uri }) => {
+                            if (submenu !== null) {
+                                return (
+                                    <li key={label} className="flex flex-col" >
+                                        <div className="space-x-1" >
+                                            <Link className="bg-red-200/0 text-lg font-semibold text-stone-50" href={uri} key={label} >
+                                                {label}
+                                            </Link>
+                                            <button className="text-stone-50" >
+                                                <FaArrowDown />
+                                            </button>
+                                        </div>
+                                        <ul className="flex flex-col space-y-1" >
+                                            {
+                                                submenu.map(({ label, uri }) => {
+                                                    return (
+                                                        <Link className="bg-red-200/0  text-md font-bold text-stone-400" href={uri} key={label} >
+                                                            {label}
+                                                        </Link>
+                                                    )
+                                                })
+                                            }
+                                        </ul>
+                                    </li>
+                                )
+                            } else {
+                                return (
+                                    <Link className="bg-red-200/0 text-stone-50 text-lg font-semibold" href={uri} key={label} >
+                                        {label}
+                                    </Link>
+                                )
+                            }
+                        })
+                    }
                 </menu>
+                <div className="flex items-center justify-end space-x-2" >
+                    {
+                        details.map(({ icon, label, uri }) => {
+                            return (
+                                <Link className="w-9 h-9 flex items-center justify-center text-2xl text-stone-50 duration-100 linear hover:text-stone-300 focus:text-stone-300" href={uri} title={label} key={label} >
+                                    {icon === "gear" && <FaGear />}
+                                    {icon === "exit" && <BiExit />}
+                                </Link>
+                            )
+                        })
+                    }
+                </div>
             </nav>
-            <div className="col-span-14 bg-blue-800/0 h-content p-4" >
-                {children}
+            <div className="col-span-14 bg-blue-800/0" >
+                <div className="bg-stone-800 text-white w-full h-[3.25rem] flex items-center justify-end px-2 sticky top-0 " >
+                    <form action="" className="bg-blue-200" ><input type="search" name="" placeholder="Szukaj" id="" /></form>
+                </div>
+                <div className="" >
+                    {children}
+                </div>
             </div>
         </div>
     );

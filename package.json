@@ -10,10 +10,14 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
+    "framer-motion": "^12.11.3",
+    "googleapis": "^148.0.0",
+    "moment-timezone": "^0.5.48",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "recharts": "^2.15.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
