@@ -1,8 +1,11 @@
 import { google } from "googleapis";
 import { authClient } from "../configs/googleapis";
 
-export default function getSearchConsole(accesToken: string) {
-    authClient.setCredentials({ access_token: accesToken });
+const accessToken = process.env.GOOGLE_ACCESS_TOKEN as string;
+const refreshToken = process.env.GOOGLE_REFRESH_TOKEN as string;
+
+export default function getSearchConsole() {
+    authClient.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
 
     return google.searchconsole({
         version: 'v1',

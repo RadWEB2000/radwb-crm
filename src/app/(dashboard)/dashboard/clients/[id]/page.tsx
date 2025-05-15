@@ -1,24 +1,24 @@
-import { getSearchConsole } from "@/lib/functions/getSearchConsole";
+import getSearchConsole from "@/funcs/getSearchConsole";
+import getDefaultDateRange from "@/lib/functions/getDefaultDateRange";
 import Link from "next/link";
+import { LineChart, ResponsiveContainer } from "recharts";
 
 export default async function ClientPage({ params }: { params: { id: number } }) {
 
     const props = await params;
 
-    const getGSC = await getSearchConsole.searchanalytics.query({
+    const dateRange = getDefaultDateRange();
+
+    const getGSC = (await getSearchConsole().searchanalytics.query({
         siteUrl: 'https://agromar.site',
         requestBody: {
-            startDate: '2024-07-01',
-            endDate: '2025-01-01',
+            startDate: dateRange.start,
+            endDate: dateRange.end,
             dimensions: [
-                'query'
+                'date'
             ]
         }
-    })
-
-    console.log(getGSC)
-
-
+    })).data.rows
 
     return (
         <>
@@ -30,7 +30,9 @@ export default async function ClientPage({ params }: { params: { id: number } })
             <div
                 className="px-3 mt-2"
             >
-                <div className="h-12 w-full bg-red-200"></div>
+                <div className="h-12 w-full bg-red-200">
+
+                </div>
             </div>
         </>
     )
